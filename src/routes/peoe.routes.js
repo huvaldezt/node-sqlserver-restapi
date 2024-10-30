@@ -1,20 +1,37 @@
-import { Router } from "express";
+import { Router } from 'express'
+import { authenticateToken } from '../helpers/validateAuth.js'
 
-import { postLogin, postLogout } from "../controllers/account.controller.js"
+import {
+  postLogin,
+  postLogout
+} from '../controllers/account.controller.js'
 
 import {
   getSubsistemasId,
-  getFolioPeoe
-} from "../controllers/peoe.controller.js";
+  getFolioPeoe,
+  getEscuelas,
+  getFoliosXNombre,
+  getFoliosXEscuela
+} from '../controllers/peoe.controller.js'
 
-const router = Router();
+const router = Router()
 
-router.post('/login', postLogin);
+router.get('/', (req, res) => {
+  res.send('<h3>Bienvenido a la API PEOE<h3>')
+})
 
-router.post('/logout', postLogout);
+router.post('/login', postLogin)
 
-router.get('/subsistemas/:id', getSubsistemasId);
+router.post('/logout', postLogout)
 
-router.get('/buscaFolio', getFolioPeoe);
+router.get('/subsistemas/:id', authenticateToken, getSubsistemasId)
 
-export default router;
+router.get('/buscaFolio', authenticateToken, getFolioPeoe)
+
+router.get('/getEscuelas', authenticateToken, getEscuelas)
+
+router.get('/getFoliosXNombre', authenticateToken, getFoliosXNombre)
+
+router.get('/getFoliosXEscuela/:id', authenticateToken, getFoliosXEscuela)
+
+export default router

@@ -1,7 +1,7 @@
 {
   "name": "node-sqlserver-restapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend para adminPeoe",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.4",
     "express": "^4.18.2",
@@ -22,9 +23,13 @@
     "mssql": "^10.0.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.3"
+    "nodemon": "^3.0.3",
+    "standard": "^17.1.2"
   },
   "engines": {
     "node": ">=18.20.4"
+  },
+  "eslintConfig": {
+    "extends": "standard"
   }
 }

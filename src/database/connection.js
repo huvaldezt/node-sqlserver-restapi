@@ -1,5 +1,5 @@
-import sql from "mssql";
-import { DB_DATABASE, DB_PASSWORD, DB_SERVER, DB_USER } from "../config.js";
+import sql from 'mssql'
+import { DB_DATABASE, DB_PASSWORD, DB_SERVER, DB_USER } from '../config.js'
 
 export const dbSettings = {
   user: DB_USER,
@@ -8,18 +8,18 @@ export const dbSettings = {
   database: DB_DATABASE,
   options: {
     encrypt: true, // for azure
-    trustServerCertificate: true, // change to true for local dev / self-signed certs
-  },
-};
+    trustServerCertificate: true // change to true for local dev / self-signed certs
+  }
+}
 
 export const getConnection = async () => {
   try {
-    const pool = await sql.connect(dbSettings);
-    console.log('Conectado correctamente');
-    return pool;
+    const pool = await sql.connect(dbSettings)
+    // console.log('Conectado correctamente')
+    return pool
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 
-export { sql };
+export { sql }
